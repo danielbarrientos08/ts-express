@@ -1,20 +1,29 @@
-
-import express, {Application} from 'express';
+import express, { Application } from 'express';
+import userRoutes from '../routes/user.route';
 
 class Server {
-    private app: Application;
-    private port: string;
+  private app: Application;
+  private port: string;
+  private apiPaths = {
+    users:'/api/users',
+  }
 
-    constructor() {
-        this.app = express();
-        this.port = process.env.PORT || '3000';
-    }
+  constructor() {
+    this.app = express();
+    this.port = process.env.PORT || '3000';
 
-    listen() {
-        this.app.listen(this.port, ()=> {
-            console.log('server opn port: '+ this.port )
-        })
-    }
+    this.routes();
+  }
+
+  routes() {
+    this.app.use(this.apiPaths.users, userRoutes);
+  }
+
+  listen() {
+    this.app.listen(this.port, () => {
+      console.log('server opn port: ' + this.port);
+    });
+  }
 }
 
 export default Server;
