@@ -14,33 +14,30 @@ export const getUser = (req: Request, res: Response) => {
   });
 };
 
-
 export const postUser = (req: Request, res: Response) => {
   const { body } = req;
 
   res.json({
     msg: 'postUser',
-    body
+    body,
   });
 };
 
 export const putUser = (req: Request, res: Response) => {
-
   const { body } = req;
   const { id } = req.params;
 
   res.json({
     msg: 'putUser',
     body,
-    id
+    id,
   });
 };
 export const deleteUser = (req: Request, res: Response) => {
-
   const { id } = req.params;
 
   res.json({
     msg: 'deleteUser',
-    id
+    id,
   });
 };
